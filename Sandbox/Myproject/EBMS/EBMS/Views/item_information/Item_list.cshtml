@@ -1,0 +1,161 @@
+﻿@model IEnumerable<EBMS.Models.iteminformationmodel>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Item_list</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.item_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.item_barcode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.item_article_no)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.item_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.item_print_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.item_group_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.item_company_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.item_unit_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.item_CGST)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.item_SGST)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.item_IGST)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.item_MRP)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.item_purchase_price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.item_sale_price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.item_previous_stock)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.item_stock_amount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.item_description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.item_maxlevel_qty)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.item_minlevel_qty)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.img)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.item_deleted)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.item_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.item_barcode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.item_article_no)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.item_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.item_print_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.item_group_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.item_company_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.item_unit_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.item_CGST)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.item_SGST)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.item_IGST)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.item_MRP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.item_purchase_price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.item_sale_price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.item_previous_stock)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.item_stock_amount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.item_description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.item_maxlevel_qty)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.item_minlevel_qty)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.img)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.item_deleted)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+                @Html.ActionLink("Details", "Details", new { id=item.id }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.id })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

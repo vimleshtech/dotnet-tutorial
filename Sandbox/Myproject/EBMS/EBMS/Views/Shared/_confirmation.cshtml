@@ -1,0 +1,37 @@
+﻿
+@Styles.Render("~/Content/css")
+
+<div id="mymodal" class="modalmy">
+    <div class="modalmy-content">
+        <div class="modalmy-header">
+            <span class="myclose">&times;</span>
+            <h3>Confirmation</h3>
+        </div>
+        <div class="modalmy-body">
+            <p>Are you Sure want to add the record?</p>
+            <input type="submit" id="Add"value="Add" name="Add" class="btn-primary btn-lg" style="border-right:20px;" />
+            <input type="button" id="Cancel" value="Cancel" class="btn-danger btn-lg" />
+        </div>
+        <div class="modalmy-footer">
+            <h5>Record will not modify in future!!!!!!!!!!!!!!!!!</h5>
+        </div>
+    </div>
+
+</div>
+<script>
+
+    var cf = document.getElementById("Cancel");
+
+    var modal = document.getElementById("mymodal");
+
+    var span = document.getElementsByClassName("myclose")[0];
+
+    cf.onclick = function () {
+        modal.style.display = "none";
+    }
+
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+
+</script>

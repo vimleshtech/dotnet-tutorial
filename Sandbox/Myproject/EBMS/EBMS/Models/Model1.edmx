@@ -1,0 +1,408 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ebmsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="code">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="group_id" Type="int" />
+          <Property Name="unit_id" Type="int" />
+          <Property Name="company_id" Type="int" />
+          <Property Name="item_information_id" Type="int" />
+          <Property Name="sale_order_id" Type="int" />
+          <Property Name="purchase_order_id" Type="int" />
+          <Property Name="sale_id" Type="int" />
+          <Property Name="purchase_id" Type="int" />
+          <Property Name="chalan_id" Type="int" />
+          <Property Name="material_cent_id" Type="int" />
+          <Property Name="article_no" Type="int" />
+          <Property Name="barcode" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="state_id" Type="int" />
+        </EntityType>
+        <EntityType Name="item_company">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="item_company_id" Type="varchar" MaxLength="30" />
+          <Property Name="item_company_name" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="item_group">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="item_group_id" Type="varchar" MaxLength="30" />
+          <Property Name="item_group_name" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="item_information">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="item_id" Type="varchar" MaxLength="30" />
+          <Property Name="item_barcode" Type="varchar" MaxLength="30" />
+          <Property Name="item_article_no" Type="varchar" MaxLength="30" />
+          <Property Name="item_name" Type="varchar" MaxLength="40" />
+          <Property Name="item_print_name" Type="varchar" MaxLength="40" />
+          <Property Name="item_group_name" Type="varchar" MaxLength="30" />
+          <Property Name="item_company_name" Type="varchar" MaxLength="30" />
+          <Property Name="item_unit_name" Type="varchar" MaxLength="30" />
+          <Property Name="item_CGST" Type="decimal" Precision="3" Scale="2" />
+          <Property Name="item_SGST" Type="decimal" Precision="3" Scale="2" />
+          <Property Name="item_IGST" Type="decimal" Precision="3" Scale="2" />
+          <Property Name="item_MRP" Type="numeric" Precision="10" Scale="3" />
+          <Property Name="item_purchase_price" Type="numeric" Precision="10" Scale="3" />
+          <Property Name="item_sale_price" Type="numeric" Precision="10" Scale="3" />
+          <Property Name="item_previous_stock" Type="numeric" Precision="10" Scale="3" />
+          <Property Name="item_stock_amount" Type="numeric" Precision="10" Scale="3" />
+          <Property Name="item_description" Type="varchar(max)" />
+          <Property Name="item_maxlevel_qty" Type="numeric" Precision="10" Scale="3" />
+          <Property Name="item_minlevel_qty" Type="numeric" Precision="10" Scale="3" />
+          <Property Name="img" Type="varbinary(max)" />
+          <Property Name="item_block" Type="bit" />
+          <Property Name="item_deleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="item_material_centre">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="material_centre_id" Type="varchar" MaxLength="30" />
+          <Property Name="material_centre_name" Type="varchar" MaxLength="30" />
+          <Property Name="material_centre_address" Type="varchar(max)" />
+          <Property Name="material_centre_type" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Item_tax">
+          <Key>
+            <PropertyRef Name="item_tax_id" />
+          </Key>
+          <Property Name="item_tax_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="item_tax_rate" Type="numeric" Precision="4" Scale="2" />
+          <Property Name="item_CGST" Type="numeric" Precision="4" Scale="2" />
+          <Property Name="item_SGST" Type="numeric" Precision="4" Scale="2" />
+          <Property Name="item_IGST" Type="numeric" Precision="4" Scale="2" />
+        </EntityType>
+        <EntityType Name="item_unit">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="item_unit_id" Type="varchar" MaxLength="30" />
+          <Property Name="item_unit_name" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="state_list">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="state_id" Type="varchar" MaxLength="30" />
+          <Property Name="state_code" Type="varchar" MaxLength="30" />
+          <Property Name="state_name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="userlogin">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_id1" Type="varchar" MaxLength="30" />
+          <Property Name="user_name1" Type="varchar" MaxLength="30" />
+          <Property Name="user_password" Type="varchar" MaxLength="30" />
+          <Property Name="user_trans_password" Type="varchar" MaxLength="30" />
+          <Property Name="user_contact" Type="varchar" MaxLength="30" />
+          <Property Name="user_block" Type="bit" />
+        </EntityType>
+        <EntityContainer Name="ebmsModelStoreContainer">
+          <EntitySet Name="code" EntityType="Self.code" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="item_company" EntityType="Self.item_company" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="item_group" EntityType="Self.item_group" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="item_information" EntityType="Self.item_information" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="item_material_centre" EntityType="Self.item_material_centre" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Item_tax" EntityType="Self.Item_tax" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="item_unit" EntityType="Self.item_unit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="state_list" EntityType="Self.state_list" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="userlogin" EntityType="Self.userlogin" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ebmsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="code">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="group_id" Type="Int32" />
+          <Property Name="unit_id" Type="Int32" />
+          <Property Name="company_id" Type="Int32" />
+          <Property Name="item_information_id" Type="Int32" />
+          <Property Name="sale_order_id" Type="Int32" />
+          <Property Name="purchase_order_id" Type="Int32" />
+          <Property Name="sale_id" Type="Int32" />
+          <Property Name="purchase_id" Type="Int32" />
+          <Property Name="chalan_id" Type="Int32" />
+          <Property Name="material_cent_id" Type="Int32" />
+          <Property Name="article_no" Type="Int32" />
+          <Property Name="barcode" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="state_id" Type="Int32" />
+        </EntityType>
+        <EntityType Name="item_company">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="item_company_id" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="item_company_name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="item_group">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="item_group_id" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="item_group_name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="item_unit">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="item_unit_id" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="item_unit_name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="ebmsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="codes" EntityType="Self.code" />
+          <EntitySet Name="item_company" EntityType="Self.item_company" />
+          <EntitySet Name="item_group" EntityType="Self.item_group" />
+          <EntitySet Name="item_unit" EntityType="Self.item_unit" />
+          <EntitySet Name="item_material_centre" EntityType="ebmsModel.item_material_centre" />
+          <EntitySet Name="state_list" EntityType="ebmsModel.state_list" />
+          <EntitySet Name="item_information" EntityType="ebmsModel.item_information" />
+          <EntitySet Name="userlogins" EntityType="ebmsModel.userlogin" />
+          <EntitySet Name="Item_tax" EntityType="ebmsModel.Item_tax" />
+        </EntityContainer>
+        <EntityType Name="item_material_centre">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="material_centre_id" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="material_centre_name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="material_centre_address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="material_centre_type" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="state_list">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="state_id" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="state_code" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="state_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="item_information">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="item_id" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="item_barcode" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="item_article_no" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="item_name" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="item_print_name" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="item_group_name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="item_company_name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="item_unit_name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="item_CGST" Type="Decimal" Precision="3" Scale="2" />
+          <Property Name="item_SGST" Type="Decimal" Precision="3" Scale="2" />
+          <Property Name="item_IGST" Type="Decimal" Precision="3" Scale="2" />
+          <Property Name="item_MRP" Type="Decimal" Precision="10" Scale="3" />
+          <Property Name="item_purchase_price" Type="Decimal" Precision="10" Scale="3" />
+          <Property Name="item_sale_price" Type="Decimal" Precision="10" Scale="3" />
+          <Property Name="item_previous_stock" Type="Decimal" Precision="10" Scale="3" />
+          <Property Name="item_stock_amount" Type="Decimal" Precision="10" Scale="3" />
+          <Property Name="item_description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="item_maxlevel_qty" Type="Decimal" Precision="10" Scale="3" />
+          <Property Name="item_minlevel_qty" Type="Decimal" Precision="10" Scale="3" />
+          <Property Name="img" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="item_block" Type="Boolean" />
+          <Property Name="item_deleted" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="userlogin">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_id1" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="user_name1" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="user_password" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="user_trans_password" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="user_contact" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="user_block" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Item_tax">
+          <Key>
+            <PropertyRef Name="item_tax_id" />
+          </Key>
+          <Property Name="item_tax_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="item_tax_rate" Type="Decimal" Precision="4" Scale="2" />
+          <Property Name="item_CGST" Type="Decimal" Precision="4" Scale="2" />
+          <Property Name="item_SGST" Type="Decimal" Precision="4" Scale="2" />
+          <Property Name="item_IGST" Type="Decimal" Precision="4" Scale="2" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ebmsModelStoreContainer" CdmEntityContainer="ebmsEntities">
+          <EntitySetMapping Name="codes">
+            <EntityTypeMapping TypeName="ebmsModel.code">
+              <MappingFragment StoreEntitySet="code">
+                <ScalarProperty Name="state_id" ColumnName="state_id" />
+                <ScalarProperty Name="barcode" ColumnName="barcode" />
+                <ScalarProperty Name="article_no" ColumnName="article_no" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="group_id" ColumnName="group_id" />
+                <ScalarProperty Name="unit_id" ColumnName="unit_id" />
+                <ScalarProperty Name="company_id" ColumnName="company_id" />
+                <ScalarProperty Name="item_information_id" ColumnName="item_information_id" />
+                <ScalarProperty Name="sale_order_id" ColumnName="sale_order_id" />
+                <ScalarProperty Name="purchase_order_id" ColumnName="purchase_order_id" />
+                <ScalarProperty Name="sale_id" ColumnName="sale_id" />
+                <ScalarProperty Name="purchase_id" ColumnName="purchase_id" />
+                <ScalarProperty Name="chalan_id" ColumnName="chalan_id" />
+                <ScalarProperty Name="material_cent_id" ColumnName="material_cent_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="item_company">
+            <EntityTypeMapping TypeName="ebmsModel.item_company">
+              <MappingFragment StoreEntitySet="item_company">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="item_company_id" ColumnName="item_company_id" />
+                <ScalarProperty Name="item_company_name" ColumnName="item_company_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="item_group">
+            <EntityTypeMapping TypeName="ebmsModel.item_group">
+              <MappingFragment StoreEntitySet="item_group">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="item_group_id" ColumnName="item_group_id" />
+                <ScalarProperty Name="item_group_name" ColumnName="item_group_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="item_unit">
+            <EntityTypeMapping TypeName="ebmsModel.item_unit">
+              <MappingFragment StoreEntitySet="item_unit">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="item_unit_id" ColumnName="item_unit_id" />
+                <ScalarProperty Name="item_unit_name" ColumnName="item_unit_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="item_material_centre">
+            <EntityTypeMapping TypeName="ebmsModel.item_material_centre">
+              <MappingFragment StoreEntitySet="item_material_centre">
+                <ScalarProperty Name="material_centre_type" ColumnName="material_centre_type" />
+                <ScalarProperty Name="material_centre_address" ColumnName="material_centre_address" />
+                <ScalarProperty Name="material_centre_name" ColumnName="material_centre_name" />
+                <ScalarProperty Name="material_centre_id" ColumnName="material_centre_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="state_list">
+            <EntityTypeMapping TypeName="ebmsModel.state_list">
+              <MappingFragment StoreEntitySet="state_list">
+                <ScalarProperty Name="state_name" ColumnName="state_name" />
+                <ScalarProperty Name="state_code" ColumnName="state_code" />
+                <ScalarProperty Name="state_id" ColumnName="state_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="item_information">
+            <EntityTypeMapping TypeName="ebmsModel.item_information">
+              <MappingFragment StoreEntitySet="item_information">
+                <ScalarProperty Name="item_deleted" ColumnName="item_deleted" />
+                <ScalarProperty Name="item_block" ColumnName="item_block" />
+                <ScalarProperty Name="img" ColumnName="img" />
+                <ScalarProperty Name="item_minlevel_qty" ColumnName="item_minlevel_qty" />
+                <ScalarProperty Name="item_maxlevel_qty" ColumnName="item_maxlevel_qty" />
+                <ScalarProperty Name="item_description" ColumnName="item_description" />
+                <ScalarProperty Name="item_stock_amount" ColumnName="item_stock_amount" />
+                <ScalarProperty Name="item_previous_stock" ColumnName="item_previous_stock" />
+                <ScalarProperty Name="item_sale_price" ColumnName="item_sale_price" />
+                <ScalarProperty Name="item_purchase_price" ColumnName="item_purchase_price" />
+                <ScalarProperty Name="item_MRP" ColumnName="item_MRP" />
+                <ScalarProperty Name="item_IGST" ColumnName="item_IGST" />
+                <ScalarProperty Name="item_SGST" ColumnName="item_SGST" />
+                <ScalarProperty Name="item_CGST" ColumnName="item_CGST" />
+                <ScalarProperty Name="item_unit_name" ColumnName="item_unit_name" />
+                <ScalarProperty Name="item_company_name" ColumnName="item_company_name" />
+                <ScalarProperty Name="item_group_name" ColumnName="item_group_name" />
+                <ScalarProperty Name="item_print_name" ColumnName="item_print_name" />
+                <ScalarProperty Name="item_name" ColumnName="item_name" />
+                <ScalarProperty Name="item_article_no" ColumnName="item_article_no" />
+                <ScalarProperty Name="item_barcode" ColumnName="item_barcode" />
+                <ScalarProperty Name="item_id" ColumnName="item_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="userlogins">
+            <EntityTypeMapping TypeName="ebmsModel.userlogin">
+              <MappingFragment StoreEntitySet="userlogin">
+                <ScalarProperty Name="user_block" ColumnName="user_block" />
+                <ScalarProperty Name="user_contact" ColumnName="user_contact" />
+                <ScalarProperty Name="user_trans_password" ColumnName="user_trans_password" />
+                <ScalarProperty Name="user_password" ColumnName="user_password" />
+                <ScalarProperty Name="user_name1" ColumnName="user_name1" />
+                <ScalarProperty Name="user_id1" ColumnName="user_id1" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Item_tax">
+            <EntityTypeMapping TypeName="ebmsModel.Item_tax">
+              <MappingFragment StoreEntitySet="Item_tax">
+                <ScalarProperty Name="item_IGST" ColumnName="item_IGST" />
+                <ScalarProperty Name="item_SGST" ColumnName="item_SGST" />
+                <ScalarProperty Name="item_CGST" ColumnName="item_CGST" />
+                <ScalarProperty Name="item_tax_rate" ColumnName="item_tax_rate" />
+                <ScalarProperty Name="item_tax_id" ColumnName="item_tax_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

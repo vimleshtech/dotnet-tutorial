@@ -1,0 +1,60 @@
+﻿@model IEnumerable<EBMS.Models.materialcentremodel>
+
+@{
+    
+    Layout = "~/Views/Shared/_websoft.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>material_centre_list</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.material_centre_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.material_centre_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.material_centre_address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.material_centre_type)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.material_centre_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.material_centre_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.material_centre_address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.material_centre_type)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+                @Html.ActionLink("Details", "Details", new { id=item.id }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.id })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

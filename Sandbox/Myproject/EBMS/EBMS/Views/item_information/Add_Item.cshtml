@@ -1,0 +1,406 @@
+﻿@model EBMS.Models.iteminformationmodel
+
+@{
+    ViewBag.Title = "Add_Item";
+    Layout = "~/Views/Shared/_websoft.cshtml";
+}
+
+@using (Html.BeginForm("Add_Item", "item_information", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <h2 style="text-align:center;">NEW ITEM ADD </h2>
+    <div class="container">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="row">
+            <div class="col-6">
+                <div class="form-group">
+
+                    @Html.LabelFor(model => model.item_name, htmlAttributes: new { })
+                    @Html.EditorFor(model => model.item_name, new { htmlAttributes = new {
+                    @class = "form-control", @placeholder = "ITEM NAME",autocomplete="off" }})
+
+                    @Html.ValidationMessageFor(model => model.item_name, "", new { @class = "text-danger" })
+
+                </div>
+            </div>
+            <div class="col-6">
+                <input type="text" class="form-control" />
+
+            </div>
+        </div>
+        <div class="container">
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+
+                @{
+                    if (ViewBag.genegate_barcode == "false")
+                    {
+                        <input type="checkbox" id="Generate_Barcode" />
+                        <label for="Generate_Barcode"> Automatic Generate Barcode </label>
+
+
+                    }
+                    else
+                    {
+                        <input type="checkbox" id="Generate_Barcode" checked />
+                        <label for="Generate_Barcode"> Automatic Generate Barcode </label>
+                    }
+                }
+
+                @{
+                    string s = "";
+                    if (ViewBag.item_barcode != null)
+                    {
+                        s = ViewBag.item_barcode;
+                    }
+                }
+                @Html.EditorFor(model => model.item_barcode, new { htmlAttributes = new {
+                @class = "form-control", disabled = "true", value=s} })
+
+                @Html.ValidationMessageFor(model => model.item_barcode, "", new { @class = "text-danger" })
+
+            </div>
+
+            <div class="form-group">
+
+                @Html.LabelFor(model => model.item_name, htmlAttributes: new { })
+                @Html.EditorFor(model => model.item_name, new { htmlAttributes = new {
+                @class = "form-control", @placeholder = "ITEM NAME",autocomplete="off" }})
+
+                @Html.ValidationMessageFor(model => model.item_name, "", new { @class = "text-danger" })
+
+            </div>
+
+            <div class="form-group">
+
+                @Html.CheckBox("print_name_chk",true) Same As Item Name
+
+                @{ 
+                    string y = "";
+                    if (ViewBag.item_print_name != null)
+                    {
+                        y = ViewBag.item_print_name;
+                    }
+                }
+                @Html.EditorFor(model => model.item_print_name, new { htmlAttributes = new  {
+                   @class = "form-control", @placeholder = "ITEM PRINT NAME" ,value=y }})
+
+                @Html.ValidationMessageFor(model => model.item_print_name, "", new { @class = "text-danger" })
+
+               
+            </div>
+
+            <div class="form-group">
+
+                @Html.LabelFor(model => model.item_company_name, htmlAttributes: new { })
+
+                @{
+
+                    List<EBMS.Models.item_company> company_list = (List<EBMS.Models.item_company>)ViewBag.company;
+                }
+
+                @Html.DropDownListFor(x => company_list, new SelectList(company_list, "item_company_id", "item_company_name"), htmlAttributes: new
+                {
+                   name = "company_list",@class = "form-control"
+                })
+
+                @Html.ValidationMessageFor(model => model.item_group_name, "", new { @class = "text-danger" })
+
+            </div>
+
+            <div class="form-group">
+
+                @Html.LabelFor(model => model.item_group_name, htmlAttributes: new { })
+
+                @{
+                    List<EBMS.Models.item_group> group_list = (List<EBMS.Models.item_group>)ViewBag.group;
+                }
+
+                @Html.DropDownListFor(x => group_list, new SelectList(group_list, "item_group_id", "item_group_name"), htmlAttributes: new
+                {
+                   name = "group_list",@class = "form-control"
+                })
+
+                @Html.ValidationMessageFor(model => model.item_company_name, "", new { @class = "text-danger" })
+
+            </div>
+
+            <div class="form-group">
+
+                @Html.LabelFor(model => model.item_unit_name, htmlAttributes: new { })
+
+                @{
+                    List<EBMS.Models.item_unit> unit_list = (List<EBMS.Models.item_unit>)ViewBag.unit;
+                }
+                @Html.DropDownListFor(x => unit_list, new SelectList(unit_list, "item_unit_id", "item_unit_name"), htmlAttributes: new
+           {
+               name = "unit_list",
+               @class = "form-control"
+           })
+
+                @Html.ValidationMessageFor(model => model.item_unit_name, "", new { @class = "text-danger" })
+
+            </div>
+
+            <div class="form-group">
+                <label > ITEM TAX </label>
+
+                @{ 
+                    List<EBMS.Models.Item_tax> tax_list = (List<EBMS.Models.Item_tax>)ViewBag.tax;
+                }
+                @Html.DropDownListFor(x=> tax_list,new SelectList(tax_list,"item_tax_rate","item_tax_rate"),htmlAttributes:new
+           { name="tax_list",
+               @class ="form-control"})
+            </div>           
+
+            <div class="form-group">
+
+
+                @Html.LabelFor(model => model.item_MRP, htmlAttributes: new { })
+
+                @Html.EditorFor(model => model.item_MRP, new { htmlAttributes = new { @class = "form-control", @placeholder = "ITEM MRP" } })
+
+                @Html.ValidationMessageFor(model => model.item_MRP, "", new { @class = "text-danger" })
+
+            </div>
+
+            <div class="form-group">
+
+                @Html.LabelFor(model => model.item_purchase_price, htmlAttributes: new { })
+
+                @Html.CheckBox("smamrpp", true)Same as MRP
+
+                @Html.EditorFor(model => model.item_purchase_price, new { htmlAttributes = new { @class = "form-control", @placeholder = "ITEM PURCHASE PRICE" } })
+
+                @Html.ValidationMessageFor(model => model.item_purchase_price, "", new { @class = "text-danger" })
+
+            </div>
+
+            <div class="form-group">
+
+                @Html.LabelFor(model => model.item_sale_price, htmlAttributes: new { })
+
+                @Html.CheckBox("smamrps", true)Same as MRP
+
+                @Html.EditorFor(model => model.item_sale_price, new { htmlAttributes = new { @class = "form-control", @placeholder = "ITEM SALE PRICE" } })
+
+                @Html.ValidationMessageFor(model => model.item_sale_price, "", new { @class = "text-danger" })
+
+            </div>
+
+            <div class="form-group">
+
+                @Html.LabelFor(model => model.item_previous_stock, htmlAttributes: new { })
+
+                @Html.EditorFor(model => model.item_previous_stock, new { htmlAttributes = new { @class = "form-control", @placeholder = "ITEM PREVIOUS STOCK" } })
+
+                @Html.ValidationMessageFor(model => model.item_previous_stock, "", new { @class = "text-danger" })
+
+            </div>
+
+            <div class="form-group">
+
+                @Html.LabelFor(model => model.item_maxlevel_qty, htmlAttributes: new { })
+
+                @Html.EditorFor(model => model.item_maxlevel_qty, new { htmlAttributes = new { @class = "form-control", @placeholder = "ITEM MAX LEVEL QUANTITY" } })
+
+                @Html.ValidationMessageFor(model => model.item_maxlevel_qty, "", new { @class = "text-danger" })
+
+            </div>
+
+            <div class="form-group">
+
+                @Html.LabelFor(model => model.item_minlevel_qty, htmlAttributes: new { })
+
+                @Html.EditorFor(model => model.item_minlevel_qty, new { htmlAttributes = new { @class = "form-control", @placeholder = "ITEM MINIMUM LEVEL QUANTITY" } })
+
+                @Html.ValidationMessageFor(model => model.item_minlevel_qty, "", new { @class = "text-danger" })
+
+            </div>
+
+            <div class="form-group">
+
+                @Html.LabelFor(model => model.item_description, htmlAttributes: new { })
+
+                @Html.TextAreaFor(model => model.item_description, new { @class = "form-control", placeholder = "ITEM DESCRIPTION" })
+
+                @Html.ValidationMessageFor(model => model.item_description, "", new { @class = "text-danger" })
+
+            </div>
+            
+            <div class="form-group">
+
+                <input type="submit" value="Create" class="btn btn-primary form-control" />
+
+            </div>
+        </div>
+
+    </div>
+}
+
+
+<script>
+
+    var gen_barcode = document.getElementById("Generate_Barcode");
+
+    var item_name = document.getElementById("item_name");
+
+    var item_print_name = document.getElementById("item_print_name");
+
+    var print_name = document.getElementById("print_name_chk");
+
+    var item_mrp = document.getElementById("item_MRP");
+
+    var pur_price = document.getElementById("item_purchase_price");
+
+    var sal_price = document.getElementById("item_sale_price");
+
+    var chk_pur = document.getElementById("smamrpp");
+
+    var chk_sal = document.getElementById("smamrps");
+
+    var prev_stock = document.getElementById("item_previous_stock");
+
+    var imilq = document.getElementById("item_minlevel_qty");
+
+    var imalq = document.getElementById("item_maxlevel_qty");
+
+
+    imilq.onblur = function () {
+
+        if (imilq.value == '') {
+            imilq.value = "0.000"
+        }
+        else if (!isNaN(imilq.value)) {
+
+            var resqw = parseFloat(imilq.value)
+            var resqw1 = resqw.toFixed(3)
+            imilq.value = resqw1
+
+        }
+        else {
+            imilq.value = "0.000";
+        }
+
+    }
+
+    imalq.onblur = function () {
+
+        if (imalq.value == '') {
+            imalq.value = "0.000"
+        }
+        else if (!isNaN(imalq.value)) {
+
+            var resqwd = parseFloat(imalq.value)
+            var resqwd1 = resqwd.toFixed(3)
+            imalq.value = resqwd1
+
+        }
+        else {
+            imalq.value = "0.000";
+        }
+
+    }
+
+    gen_barcode.onclick = function () {
+
+        if (gen_barcode.checked) {
+            document.getElementById("item_barcode").disabled = true;
+            document.getElementById("item_barcode").value = "";
+        }
+        else {
+            document.getElementById("item_barcode").disabled = false;
+           
+        }
+    }
+
+    item_mrp.onkeyup = function () {
+
+        if (chk_pur.checked == true) {
+
+            pur_price.value = item_mrp.value;
+        }
+
+        if (chk_sal.checked == true) {
+
+            sal_price.value = item_mrp.value;
+        }
+
+
+    }
+
+    prev_stock.onblur = function () {
+
+        if (prev_stock.value == '') {
+            prev_stock.value = "0.000";
+        }
+        else if (!isNaN(prev_stock.value)) {
+            var res = parseFloat(prev_stock.value)
+            var res1 = res.toFixed(3)
+            prev_stock.value = res1
+
+        }
+        else {
+            prev_stock.value = "0.000";
+        }
+    }
+
+    item_mrp.onblur = function () {
+
+        if (item_mrp.value == '') {
+            item_mrp.value = "0.000";
+
+
+        }
+        else if (!isNaN(item_mrp.value)) {
+            var result = parseFloat(item_mrp.value)
+            var result1 = result.toFixed(3)
+            item_mrp.value = result1
+        }
+        else {
+            item_mrp.value = "0.000";
+        }
+
+        if (chk_pur.checked == true) {
+            pur_price.value = item_mrp.value;
+        }
+        if (chk_sal.checked == true) {
+            sal_price.value = item_mrp.value
+        }
+
+    }
+
+    chk_pur.onclick = function () {
+        if (chk_pur.checked == true) {
+            pur_price.value = item_mrp.value;
+        }
+    }
+    chk_sal.onclick = function () {
+        if (chk_sal.checked == true) {
+            sal_price.value = item_mrp.value
+        }
+    }
+    item_name.onkeyup = function () {
+        if (print_name.checked) {
+            item_print_name.value = item_name.value;
+        }
+    }
+
+    print_name.onclick = function () {
+        if (print_name.checked) {
+            document.getElementById("item_print_name").disabled = true;
+            item_print_name.value = item_name.value;
+        }
+        else {
+            document.getElementById("item_print_name").disabled = false;
+        }
+    }
+
+
+</script>
+
+

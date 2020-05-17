@@ -1,0 +1,97 @@
+﻿@model EBMS.Models.itemgroupmodel
+
+@{
+    ViewBag.Title = "item_group";
+    Layout = "~/Views/Shared/_websoft.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group ">
+
+            @Html.LabelFor(model => model.item_group_name, htmlAttributes: new { id= "ign" })
+
+            @Html.EditorFor(model => model.item_group_name, new { htmlAttributes = new {
+            @class ="form-control",placeholder="ITEM GROUP NAME"}})
+
+            @Html.ValidationMessageFor(model => model.item_group_name, "", new { @class = "text-danger" })
+
+        </div>
+
+        <div class="form-group ">
+
+            <input type="button" name="Submit" value="Add" id="mybtn" class="btn-primary form-control " />
+            <input type="submit" name="Delete" value="Delete" class="btn-danger form-control " />
+
+        </div>
+
+        <div id="mymodal" class="modelmy">
+            <div class=" modelmy-content">
+                <span class="myclose"> &times;</span>
+                <div class="form-group">
+                    <p> Are You Sure Want To Save Data?</p>
+                    <input type="submit" name="Add" value="Add" class="btn-success " />
+                    <input type="button" name="Cancel" value="Cancel" autofocus id="cancel" class="btn-danger" />
+
+                </div>
+
+            </div>
+        </div>
+        @*   <div class="form-group">
+                @{
+            
+                    List<EBMS.Models.item_company> data = (List<EBMS.Models.item_company>)TempData["company_list"];
+
+                }
+                @Html.DropDownListFor(x=>data ,new SelectList (data,"item_company_id","item_company_name"),htmlAttributes : new { name="company_list",@class="dropdown form-control"})
+
+            </div>*@
+    </div>
+
+   
+}
+    <script>
+
+    var model = document.getElementById("mymodal");
+    var btn = document.getElementById("mybtn");
+    var btn1 = document.getElementById("cancel");
+    var span = document.getElementsByClassName("myclose")[0];
+
+    //When the user clicks the button, open the modal
+
+    btn.onclick = function () {
+        model.style.display = "block";
+        document.getElementById("cancel").focus();
+        
+    }
+
+    btn1.onclick = function () {
+
+        model.style.display = "none";
+    }
+
+    // when the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+        model.style.display = "none";
+
+    }
+
+    // When the user clicks anywhere outside of the modal, close its
+    window.onclick = function (event) {
+       //alert('hi');
+
+        //alert(event.target.id);
+        //alert(model.id);
+
+        if (event.target.id == model.id ) {
+
+                model.style.display = "none";
+        }
+    }
+    </script>

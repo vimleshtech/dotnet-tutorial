@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1061f1e68abb4d9eb898c9ed670a1894" Name="Diagram1" ZoomLevel="114">
+        <EntityTypeShape EntityType="ebmsModel.code" Width="1.5" PointX="0.5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ebmsModel.item_company" Width="1.5" PointX="2.125" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ebmsModel.item_group" Width="1.5" PointX="2.125" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ebmsModel.item_unit" Width="1.5" PointX="3.75" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ebmsModel.item_material_centre" Width="2.375" PointX="3.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ebmsModel.state_list" Width="1.5" PointX="5.375" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ebmsModel.item_information" Width="2.625" PointX="0.5" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ebmsModel.userlogin" Width="1.5" PointX="7" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ebmsModel.Item_tax" Width="1.5" PointX="3.25" PointY="4.625" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

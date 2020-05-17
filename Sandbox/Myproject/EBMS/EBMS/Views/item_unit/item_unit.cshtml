@@ -1,0 +1,94 @@
+﻿@model EBMS.Models.Itemunitmodel
+
+@{
+    ViewBag.Title = "item_unit";
+    Layout = "~/Views/Shared/_websoft.cshtml";
+}
+@using (Html.BeginForm())
+{
+
+    @Html.AntiForgeryToken()
+
+    if (ViewBag.isdata == true)
+    {
+        string s = "ff"; // (string) TempData["testtemp"];
+    }
+    else
+    {
+        string m = "ff";
+
+    }
+
+<div class="container ">
+
+    
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="form-group ">
+        @Html.LabelFor(model => model.item_unit_name, htmlAttributes: new { name = "djadhjksad" })
+
+        @Html.EditorFor(model => model.item_unit_name , new { htmlAttributes = new {
+        @class ="form-control",placeholder="ITEM UNIT NAME"}})
+
+        @Html.ValidationMessageFor(model => model.item_unit_name, "", new { @class = "text-danger" })
+
+    </div>
+
+    @if (ViewBag.isdata == true)
+    {
+        <div class="form-group">
+            @{
+                List<EBMS.Models.item_unit> data = (List<EBMS.Models.item_unit>)ViewBag.unitlist;
+            }
+
+            @Html.DropDownListFor(x => data, new SelectList(data, "item_unit_id", "item_unit_name"), htmlAttributes: new {
+            name = "unit_list", @class = "form-control" })
+
+        </div>
+    }
+    <div class="form-group ">
+
+        <input type="button" id="btnmy" value="Submit" class="btn-primary btn-lg form-control" />
+        <br />
+        <input type="submit" id="Delete" value="Delete" name="Delete"  class="btn-danger btn-lg form-control" />
+
+    </div>
+
+    <div id="confirm" style="display:none;">
+        @{
+            Html.RenderPartial("_confirmation");
+        }
+    </div>
+
+    <div id="process" style="display:none;">
+        @{
+            Html.RenderPartial("_processing");
+        }
+    </div>
+           
+</div>
+                    
+}
+
+<script>
+
+    var btn = document.getElementById("btnmy");
+    var modal = document.getElementById("confirm");
+
+    var hug = document.getElementById("Add");
+    var pro = document.getElementById("process");
+
+    btn.onclick = function () {
+
+        pro.style.display = "block";
+       /* modal.style.display = "block";       
+        document.getElementById("Cancel").focus();*/
+    }
+    
+    hug.onclick = function () {
+
+        pro.style.display = "block";
+        alert("jdhsdjs");
+    }
+
+</script>
